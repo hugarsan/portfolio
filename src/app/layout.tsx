@@ -20,7 +20,7 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
 });
 
-const description = `${site.name} — ${site.title}. Desarrollo de software y aplicaciones de IA: React, FastAPI, PostgreSQL, Docker y modelos de lenguaje (NLP, LLMs).`;
+const description = `${site.name} — Ingeniero Informático y Máster en Inteligencia Artificial (AI Engineer Junior). Desarrollo de software, aplicaciones de IA, Machine Learning y análisis de datos: React, FastAPI, PostgreSQL, Docker, Python y LLMs.`;
 
 export const metadata: Metadata = {
   title: {
@@ -32,13 +32,18 @@ export const metadata: Metadata = {
   authors: [{ name: site.name, url: site.github }],
   keywords: [
     "Hugo García",
+    "AI Engineer",
     "desarrollador de software",
     "inteligencia artificial",
     "machine learning",
+    "data science",
+    "análisis de datos",
+    "optimización",
     "NLP",
     "LLMs",
     "React",
     "FastAPI",
+    "Python",
     "portfolio",
   ],
   openGraph: {

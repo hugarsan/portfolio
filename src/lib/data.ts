@@ -1,24 +1,19 @@
 export const site = {
   name: "Hugo García Sánchez",
   username: "hugarsan",
-  title: "Ingeniero Informático · Inteligencia Artificial",
+  title: "Ingeniero Informático · AI Engineer Junior",
   location: "Salamanca, España",
   email: "hugarsan@gmail.com",
-  phone: "+34 654 839 951",
   github: "https://github.com/hugarsan",
   linkedin: "https://www.linkedin.com/in/hugo-garcía-sánchez-92070731b",
+  cv: "/cv/CV_Hugo_Garcia.pdf",
 };
 
 export const hero = {
   badge: "Disponible para nuevas oportunidades",
-  roles: [
-    "Ingeniero Informático",
-    "Inteligencia Artificial",
-    "Full-Stack Developer",
-    "IA Aplicada · NLP",
-  ],
+  roleTitle: "Ingeniero Informático · AI Engineer Junior",
   description:
-    "Ingeniero Informático por la Universidad de Salamanca y Máster en Inteligencia Artificial por UNIR. Desarrollo aplicaciones completas de principio a fin: desde la arquitectura web hasta los modelos de IA.",
+    "Ingeniero Informático por la Universidad de Salamanca y Máster en Inteligencia Artificial por UNIR. Mi interés se centra en el desarrollo de software, la inteligencia artificial, el Machine Learning y el análisis de datos.",
 };
 
 export const about = {
@@ -30,15 +25,30 @@ export const about = {
     { label: "Ubicación", value: "Salamanca, España" },
     { label: "Edad", value: "23 años" },
     { label: "Grado (USAL)", value: "Nota media 8,19" },
-    { label: "Máster IA (UNIR)", value: "En curso · 2026" },
+    { label: "Máster IA (UNIR)", value: "2025–2026 · Completado" },
     { label: "Disponibilidad", value: "Abierto a nuevos retos" },
   ],
   stats: [
-    { value: "2", label: "TFG y TFM" },
+    { value: "3", label: "Proyectos finales" },
     { value: "8,19", label: "Nota media" },
     { value: "3", label: "Idiomas" },
     { value: "2026", label: "Máster IA" },
   ],
+  roles: {
+    focus: [
+      "AI Engineer Junior",
+      "Machine Learning Engineer Junior",
+      "Data Scientist Junior",
+      "Data Analyst / Data Analytics",
+      "Data Engineer Junior",
+    ],
+    also: [
+      "Python Developer",
+      "Software Developer",
+      "Full-Stack Developer",
+      "Desarrollador de aplicaciones con IA",
+    ],
+  },
 };
 
 export const skills = {
@@ -78,18 +88,59 @@ export const skills = {
   ],
 };
 
-export const projects = [
+export type ProjectMetric = {
+  value: string;
+  label: string;
+};
+
+export type Project = {
+  name: string;
+  tag: string;
+  summary: string;
+  details: string[];
+  stack: string[];
+  year: string;
+  metrics?: ProjectMetric[];
+  github?: string;
+};
+
+export const projects: Project[] = [
   {
     name: "DetectIA",
     tag: "TFM · Detección de fake news",
     summary:
-      "Detección de noticias falsas en español mediante clasificación con BETO y justificaciones generadas con la API de Gemini.",
+      "Sistema de detección de noticias falsas en español basado en Deep Learning y LLMs, capaz de clasificar textos y generar explicaciones automáticas de sus predicciones.",
     details: [
-      "Clasificación de textos en español con BETO sobre datos reales.",
-      "Justificaciones explicativas generadas con la API de Gemini.",
-      "Evaluación de su fiabilidad con simulabilidad contrafactual y verificación mediante NLI.",
+      "Comparativa entre modelos clásicos de Machine Learning, LSTM y BETO, siendo este último el modelo final.",
+      "Explicabilidad de las predicciones mediante LIME y SHAP, y generación de justificaciones naturales con la API de Gemini.",
+      "Evaluación de la fiabilidad de las justificaciones con simulabilidad contrafactual y verificación mediante NLI.",
     ],
-    stack: ["Python", "BETO", "Gemini API", "NLP", "NLI"],
+    metrics: [
+      { value: "90,64%", label: "Accuracy" },
+      { value: "91,83%", label: "F1" },
+      { value: "+60.000", label: "noticias procesadas" },
+    ],
+    stack: ["Python", "BETO", "LSTM", "LIME", "SHAP", "Gemini API", "NLP", "NLI"],
+    year: "2026",
+  },
+  {
+    name: "Optimización de rutas de recogida de residuos",
+    tag: "AI Talentum · Prácticas de Máster",
+    summary:
+      "Proyecto de IA y análisis de datos orientado a la optimización de rutas de vehículos para la recogida de residuos, trabajando con información de contenedores, flota disponible, nivel de llenado y restricciones reales de carreteras.",
+    details: [
+      "Optimización de rutas sobre redes viarias reales para distintas ciudades españolas, con criterios como el nivel de llenado de contenedores y las emisiones de CO2.",
+      "Exploración y procesamiento de los datos de partida: contenedores, flota disponible y restricciones de carretera.",
+      "Asistente de IA integrado y módulo propio de evaluación de soluciones.",
+    ],
+    stack: [
+      "Python",
+      "Inteligencia Artificial",
+      "Data Analytics",
+      "Optimización",
+      "VRP",
+      "Datos de vehículos y contenedores",
+    ],
     year: "2026",
   },
   {
@@ -125,7 +176,7 @@ export const experience = [
     location: "Salamanca",
     highlight: true,
     description:
-      "Colaboración en el equipo de ciberseguridad en el desarrollo de un SIEM (Sistema de Gestión de Información y Eventos de Seguridad) con capacidades de Inteligencia Artificial.",
+      "Colaboración en el equipo de ciberseguridad del instituto de investigación, participando en el desarrollo de un SIEM (Sistema de Gestión de Información y Eventos de Seguridad) con funcionalidades de Inteligencia Artificial.",
     tags: ["Ciberseguridad", "SIEM", "IA"],
   },
   {
@@ -164,14 +215,14 @@ export const education = [
   {
     title: "Máster en Inteligencia Artificial",
     institution: "UNIR — Universidad Internacional de La Rioja",
-    period: "sep 2025 → jul 2026",
-    note: "En curso",
+    period: "2025–2026",
+    note: "Completado",
   },
   {
     title: "Grado en Ingeniería Informática",
-    institution: "Universidad de Salamanca (USAL)",
-    period: "sep 2021 → jun 2026",
-    note: "Nota media 8,19",
+    institution: "Universidad de Salamanca",
+    period: "2021–2026",
+    note: "Nota media: 8,19",
   },
 ];
 

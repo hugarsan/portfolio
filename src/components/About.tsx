@@ -51,6 +51,35 @@ export default function About() {
           </div>
         </div>
       </div>
+
+      <div className="mt-12 rounded-2xl border border-accent-500/30 bg-accent-500/[0.04] p-6 md:p-8">
+        <p className="font-mono text-sm text-accent-400">{"// busco oportunidades como"}</p>
+        <p className="mt-3 text-sm leading-6 text-slate-400">
+          Mi principal interés está orientado a la IA y los datos, y también estoy abierto a
+          puestos de desarrollo de software y perfiles tecnológicos afines.
+        </p>
+        <div className="mt-4 flex flex-wrap gap-2">
+          {about.roles.focus.map((role) => (
+            <span
+              key={role}
+              className="rounded-md border border-accent-500/25 bg-accent-500/10 px-3 py-1.5 font-mono text-xs text-accent-200"
+            >
+              {role}
+            </span>
+          ))}
+        </div>
+        <p className="mt-4 font-mono text-xs text-slate-500">también abierto a</p>
+        <div className="mt-2 flex flex-wrap gap-2">
+          {about.roles.also.map((role) => (
+            <span
+              key={role}
+              className="rounded-md border border-midnight-600 bg-midnight-800/60 px-3 py-1.5 font-mono text-xs text-slate-300"
+            >
+              {role}
+            </span>
+          ))}
+        </div>
+      </div>
     </Section>
   );
 }

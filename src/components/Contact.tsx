@@ -1,12 +1,6 @@
 import { site } from "@/lib/data";
 import Section from "@/components/Section";
-import {
-  GitHubIcon,
-  LinkedInIcon,
-  MailIcon,
-  MapPinIcon,
-  PhoneIcon,
-} from "@/components/icons";
+import { GitHubIcon, LinkedInIcon, MailIcon, MapPinIcon } from "@/components/icons";
 
 export default function Contact() {
   return (
@@ -33,7 +27,7 @@ export default function Contact() {
         </a>
       </div>
 
-      <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-16 grid gap-4 sm:grid-cols-3">
         <a
           href={`mailto:${site.email}`}
           className="group rounded-2xl border border-midnight-600/60 bg-midnight-800/40 p-6 transition-colors hover:border-accent-500/40"
@@ -42,16 +36,6 @@ export default function Contact() {
           <p className="mt-4 text-sm text-slate-500">Email</p>
           <p className="mt-1 break-all text-sm font-medium text-slate-200 group-hover:text-accent-300">
             {site.email}
-          </p>
-        </a>
-        <a
-          href={`tel:${site.phone.replace(/\s/g, "")}`}
-          className="group rounded-2xl border border-midnight-600/60 bg-midnight-800/40 p-6 transition-colors hover:border-accent-500/40"
-        >
-          <PhoneIcon className="h-6 w-6 text-accent-400" />
-          <p className="mt-4 text-sm text-slate-500">Teléfono</p>
-          <p className="mt-1 text-sm font-medium text-slate-200 group-hover:text-accent-300">
-            {site.phone}
           </p>
         </a>
         <a

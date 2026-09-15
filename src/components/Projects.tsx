@@ -1,5 +1,6 @@
 import { projects } from "@/lib/data";
 import Section from "@/components/Section";
+import { GitHubIcon } from "@/components/icons";
 
 export default function Projects() {
   return (
@@ -25,7 +26,7 @@ export default function Projects() {
             />
             <div className="flex flex-wrap items-center justify-between gap-3">
               <p className="font-mono text-sm text-accent-400">
-                proyecto_{i === 0 ? "02" : "01"}.py
+                proyecto_0{i + 1}.py
               </p>
               <span className="rounded-full border border-accent-500/30 bg-accent-500/10 px-3 py-1 font-mono text-xs text-accent-300">
                 {project.tag}
@@ -46,15 +47,46 @@ export default function Projects() {
               ))}
             </ul>
 
-            <div className="mt-6 flex flex-wrap gap-2">
-              {project.stack.map((tech) => (
-                <span
-                  key={tech}
-                  className="rounded-md border border-midnight-600 bg-midnight-800/70 px-2.5 py-1 font-mono text-xs text-slate-300"
+            {project.metrics && project.metrics.length > 0 && (
+              <div className="mt-6 grid max-w-3xl grid-cols-3 gap-3">
+                {project.metrics.map((metric) => (
+                  <div
+                    key={metric.label}
+                    className="rounded-xl border border-accent-500/25 bg-accent-500/[0.06] px-4 py-3 text-center"
+                  >
+                    <p className="gradient-text font-mono text-xl font-bold md:text-2xl">
+                      {metric.value}
+                    </p>
+                    <p className="mt-1 text-[11px] uppercase tracking-wider text-slate-400">
+                      {metric.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
+              <div className="flex flex-wrap gap-2">
+                {project.stack.map((tech) => (
+                  <span
+                    key={tech}
+                    className="rounded-md border border-midnight-600 bg-midnight-800/70 px-2.5 py-1 font-mono text-xs text-slate-300"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+              {project.github && (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-lg border border-accent-500/40 px-4 py-2 font-mono text-xs text-accent-300 transition-colors hover:bg-accent-500/10"
                 >
-                  {tech}
-                </span>
-              ))}
+                  <GitHubIcon className="h-4 w-4" />
+                  Código
+                </a>
+              )}
             </div>
           </article>
         ))}

@@ -1,19 +1,5 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import { hero, site } from "@/lib/data";
-import { ArrowDownIcon, GitHubIcon, LinkedInIcon, MailIcon } from "@/components/icons";
-
-function RotatingRole() {
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    const id = window.setInterval(() => setIndex((i) => (i + 1) % hero.roles.length), 2600);
-    return () => window.clearInterval(id);
-  }, []);
-
-  return <span className="inline-block animate-[fade-up_0.5s_ease]">{hero.roles[index]}</span>;
-}
+import { ArrowDownIcon, DownloadIcon, GitHubIcon, LinkedInIcon, MailIcon } from "@/components/icons";
 
 export default function Hero() {
   return (
@@ -38,9 +24,9 @@ export default function Hero() {
           Hugo <span className="gradient-text">García</span>
         </h1>
 
-        <div className="mt-5 flex h-8 items-center justify-center font-mono text-lg text-slate-300 md:text-2xl">
+        <div className="mt-5 flex items-center justify-center font-mono text-lg font-semibold text-slate-100 md:text-2xl">
           <span className="mr-3 text-slate-500">$</span>
-          <RotatingRole />
+          <span>{hero.roleTitle}</span>
         </div>
 
         <p className="mx-auto mt-8 max-w-2xl text-balance text-base leading-7 text-slate-400 md:text-lg">
@@ -49,8 +35,16 @@ export default function Hero() {
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <a
+            href={site.cv}
+            download
+            className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-accent-500 px-7 py-3.5 text-sm font-semibold text-midnight-950 transition-colors hover:bg-accent-400 sm:w-auto"
+          >
+            <DownloadIcon className="h-4 w-4" />
+            Descargar CV
+          </a>
+          <a
             href="#proyectos"
-            className="w-full rounded-xl bg-accent-500 px-7 py-3.5 text-sm font-semibold text-midnight-950 transition-colors hover:bg-accent-400 sm:w-auto"
+            className="w-full rounded-xl border border-midnight-600 bg-midnight-800/50 px-7 py-3.5 text-sm font-semibold text-slate-200 transition-colors hover:border-accent-500/50 hover:text-accent-300 sm:w-auto"
           >
             Ver proyectos
           </a>
