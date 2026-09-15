@@ -84,7 +84,7 @@ export default function Projects() {
                   className="inline-flex items-center gap-2 rounded-lg border border-accent-500/40 px-4 py-2 font-mono text-xs text-accent-300 transition-colors hover:bg-accent-500/10"
                 >
                   <GitHubIcon className="h-4 w-4" />
-                  Código
+                  Ver en GitHub
                 </a>
               )}
             </div>

@@ -18,16 +18,35 @@ export default function About() {
           {about.paragraphs.map((paragraph) => (
             <p key={paragraph.slice(0, 32)}>{paragraph}</p>
           ))}
+
+          <div className="rounded-2xl border border-accent-500/25 bg-accent-500/[0.05] p-5">
+            <p className="font-mono text-xs text-accent-400">{"// sobre mi situación actual"}</p>
+            <p className="mt-3 text-sm leading-6 text-slate-400">{about.roles.intro}</p>
+          </div>
+
+          <div className="rounded-2xl border border-midnight-600/60 bg-midnight-800/30 p-5">
+            <p className="font-mono text-xs text-slate-500">{"// roles a los que aspiro"}</p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {about.roles.areas.map((area) => (
+                <span
+                  key={area}
+                  className="rounded-full border border-accent-500/25 bg-accent-500/[0.05] px-3 py-1 font-mono text-xs text-accent-300"
+                >
+                  {area}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
 
         <div>
-          <div className="rounded-2xl border border-midnight-600 bg-midnight-800/50 p-6">
-            <p className="mb-4 font-mono text-xs text-slate-500">{`// datos.txt`}</p>
-            <dl className="space-y-3">
+          <div className="mb-6 rounded-2xl border border-midnight-600/60 bg-midnight-800/30 p-6">
+            <p className="font-mono text-xs text-slate-500">{`// datos.txt`}</p>
+            <dl className="mt-5 space-y-3">
               {about.facts.map((fact) => (
                 <div
                   key={fact.label}
-                  className="flex items-center justify-between gap-4 border-b border-midnight-700/60 pb-3 last:border-0 last:pb-0"
+                  className="flex items-center justify-between gap-4 border-b border-midnight-700/50 pb-3 last:border-0 last:pb-0"
                 >
                   <dt className="text-sm text-slate-500">{fact.label}</dt>
                   <dd className="text-right text-sm font-medium text-slate-200">{fact.value}</dd>
@@ -36,48 +55,19 @@ export default function About() {
             </dl>
           </div>
 
-          <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
+          <div className="mt-8 grid grid-cols-2 gap-4">
             {about.stats.map((stat) => (
               <div
                 key={stat.label}
-                className="rounded-xl border border-midnight-600/60 bg-midnight-800/30 px-4 py-5 text-center"
+                className="rounded-2xl border border-midnight-600/60 bg-midnight-800/30 px-5 py-5 text-center"
               >
                 <p className="gradient-text font-mono text-2xl font-bold">{stat.value}</p>
-                <p className="mt-1 text-[11px] uppercase tracking-wider text-slate-500">
+                <p className="mt-1 text-xs uppercase tracking-wider text-slate-500">
                   {stat.label}
                 </p>
               </div>
             ))}
           </div>
-        </div>
-      </div>
-
-      <div className="mt-12 rounded-2xl border border-accent-500/30 bg-accent-500/[0.04] p-6 md:p-8">
-        <p className="font-mono text-sm text-accent-400">{"// busco oportunidades como"}</p>
-        <p className="mt-3 text-sm leading-6 text-slate-400">
-          Mi principal interés está orientado a la IA y los datos, y también estoy abierto a
-          puestos de desarrollo de software y perfiles tecnológicos afines.
-        </p>
-        <div className="mt-4 flex flex-wrap gap-2">
-          {about.roles.focus.map((role) => (
-            <span
-              key={role}
-              className="rounded-md border border-accent-500/25 bg-accent-500/10 px-3 py-1.5 font-mono text-xs text-accent-200"
-            >
-              {role}
-            </span>
-          ))}
-        </div>
-        <p className="mt-4 font-mono text-xs text-slate-500">también abierto a</p>
-        <div className="mt-2 flex flex-wrap gap-2">
-          {about.roles.also.map((role) => (
-            <span
-              key={role}
-              className="rounded-md border border-midnight-600 bg-midnight-800/60 px-3 py-1.5 font-mono text-xs text-slate-300"
-            >
-              {role}
-            </span>
-          ))}
         </div>
       </div>
     </Section>

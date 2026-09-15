@@ -6,20 +6,20 @@ export const site = {
   email: "hugarsan@gmail.com",
   github: "https://github.com/hugarsan",
   linkedin: "https://www.linkedin.com/in/hugo-garcía-sánchez-92070731b",
-  cv: "/cv/CV_Hugo_Garcia.pdf",
+  cv: "/cv/CV_Hugo_Garcia_Sanchez_Actualizado.pdf",
 };
 
 export const hero = {
   badge: "Disponible para nuevas oportunidades",
-  roleTitle: "Ingeniero Informático · AI Engineer Junior",
+  roleTitle: "Ingeniero Informático · Máster en Inteligencia Artificial",
   description:
-    "Ingeniero Informático por la Universidad de Salamanca y Máster en Inteligencia Artificial por UNIR. Mi interés se centra en el desarrollo de software, la inteligencia artificial, el Machine Learning y el análisis de datos.",
+    "Graduado en Ingeniería Informática por la Universidad de Salamanca y Máster en Inteligencia Artificial por UNIR. Actualmente busco mi primera oportunidad profesional en IA, datos o desarrollo de software.",
 };
 
 export const about = {
   paragraphs: [
-    "Ingeniero Informático por la Universidad de Salamanca y Máster en Inteligencia Artificial por la UNIR. Formación sólida en desarrollo de software, arquitecturas web (React, FastAPI, PostgreSQL, Docker) y modelos de IA aplicada: procesamiento del lenguaje natural y LLMs.",
-    "Experiencia práctica desarrollando aplicaciones completas de principio a fin, desde el diseño hasta el despliegue. Proactivo, con capacidad de aprendizaje autónomo y buena organización, buscando aportar en un equipo técnico mientras sigo creciendo.",
+    "Formación académica en desarrollo de software, arquitecturas web (React, FastAPI, PostgreSQL, Docker) y modelos de IA aplicada: procesamiento del lenguaje natural y LLMs. Experiencia práctica construyendo aplicaciones completas de principio a fin, desde el diseño hasta el despliegue.",
+    "Proactivo, autónomo y bien organizado, con capacidad de aprendizaje continuo. Mi prioridad profesional está en la inteligencia artificial, el Machine Learning y los datos, y estoy igualmente cómodo en desarrollo de software.",
   ],
   facts: [
     { label: "Ubicación", value: "Salamanca, España" },
@@ -35,18 +35,16 @@ export const about = {
     { value: "2026", label: "Máster IA" },
   ],
   roles: {
-    focus: [
-      "AI Engineer Junior",
-      "Machine Learning Engineer Junior",
-      "Data Scientist Junior",
-      "Data Analyst / Data Analytics",
-      "Data Engineer Junior",
-    ],
-    also: [
-      "Python Developer",
-      "Software Developer",
-      "Full-Stack Developer",
-      "Desarrollador de aplicaciones con IA",
+    intro:
+      "Busco mi primera oportunidad profesional en Inteligencia Artificial, Machine Learning, Data y desarrollo de software, donde pueda aplicar mis conocimientos y seguir creciendo profesionalmente.",
+    areas: [
+      "AI Engineer",
+      "Machine Learning",
+      "Data Science",
+      "Data Analytics",
+      "Data Engineering",
+      "Python",
+      "Software Development",
     ],
   },
 };
@@ -54,24 +52,54 @@ export const about = {
 export const skills = {
   categories: [
     {
-      title: "Frontend",
-      icon: "code",
-      items: ["React", "Vite", "JavaScript", "HTML / CSS"],
-    },
-    {
-      title: "Backend & Datos",
-      icon: "server",
-      items: ["FastAPI", "PostgreSQL", "APIs REST", "Docker Compose"],
-    },
-    {
-      title: "IA y ML",
+      title: "AI & Data",
       icon: "ai",
-      items: ["Python", "NLP", "LLMs", "BETO", "Gemini API", "Análisis de datos"],
+      items: [
+        "Python",
+        "XGBoost",
+        "TF-IDF",
+        "LSTM",
+        "NLP",
+        "LLMs",
+        "BETO",
+        "Gemini",
+        "LIME",
+        "SHAP",
+      ],
     },
     {
-      title: "Herramientas",
+      title: "Software Development",
+      icon: "code",
+      items: [
+        "JavaScript",
+        "TypeScript",
+        "React",
+        "Vite",
+        "Next.js",
+        "FastAPI",
+        "REST APIs",
+        "HTML",
+        "CSS",
+      ],
+    },
+    {
+      title: "Databases",
+      icon: "server",
+      items: ["PostgreSQL", "SQL"],
+    },
+    {
+      title: "Tools & DevOps",
       icon: "tool",
-      items: ["Docker", "Git / GitHub", "Linux", "macOS", "Terminal", "Render"],
+      items: [
+        "Git",
+        "GitHub",
+        "Docker",
+        "Docker Compose",
+        "GitHub Actions",
+        "Linux",
+        "macOS",
+        "Terminal",
+      ],
     },
   ],
   competencies: [
@@ -109,18 +137,18 @@ export const projects: Project[] = [
     name: "DetectIA",
     tag: "TFM · Detección de fake news",
     summary:
-      "Sistema de detección de noticias falsas en español basado en Deep Learning y LLMs, capaz de clasificar textos y generar explicaciones automáticas de sus predicciones.",
+      "Sistema de detección de noticias falsas en español. Compara enfoques de Machine Learning y Deep Learning y genera explicaciones automáticas de sus predicciones.",
     details: [
-      "Comparativa entre modelos clásicos de Machine Learning, LSTM y BETO, siendo este último el modelo final.",
-      "Explicabilidad de las predicciones mediante LIME y SHAP, y generación de justificaciones naturales con la API de Gemini.",
-      "Evaluación de la fiabilidad de las justificaciones con simulabilidad contrafactual y verificación mediante NLI.",
+      "Comparativa entre enfoques de Machine Learning (XGBoost con TF-IDF) y Deep Learning (LSTM, BETO pre-entrenado).",
+      "Incorporación de técnicas de explicabilidad con LIME y SHAP para interpretar las predicciones.",
+      "Justificaciones generadas con Gemini y evaluación de su fiabilidad mediante simulabilidad contrafactual y verificación con NLI.",
     ],
     metrics: [
+      { value: "60K+", label: "noticias" },
       { value: "90,64%", label: "Accuracy" },
       { value: "91,83%", label: "F1" },
-      { value: "+60.000", label: "noticias procesadas" },
     ],
-    stack: ["Python", "BETO", "LSTM", "LIME", "SHAP", "Gemini API", "NLP", "NLI"],
+    stack: ["Python", "XGBoost", "TF-IDF", "LSTM", "BETO", "LIME", "SHAP", "Gemini", "NLP"],
     year: "2026",
   },
   {
@@ -135,11 +163,12 @@ export const projects: Project[] = [
     ],
     stack: [
       "Python",
-      "Inteligencia Artificial",
       "Data Analytics",
       "Optimización",
       "VRP",
-      "Datos de vehículos y contenedores",
+      "Machine Learning / IA",
+      "Datos de vehículos",
+      "Datos de contenedores",
     ],
     year: "2026",
   },
