@@ -93,11 +93,16 @@ export default function Experience() {
           <div className="flex flex-col gap-3">
             {courses.map((course) => (
               <div
-                key={course}
+                key={course.title}
                 className="flex items-center gap-3 rounded-xl border border-midnight-600/60 bg-midnight-800/30 px-5 py-4 text-sm text-slate-300"
               >
                 <span className="text-accent-400">▹</span>
-                {course}
+                <span>
+                  {course.title}
+                  <span className="ml-2 text-slate-500">
+                    {course.institution} · {course.year}
+                  </span>
+                </span>
               </div>
             ))}
           </div>
