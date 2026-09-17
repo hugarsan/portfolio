@@ -90,7 +90,8 @@ export function getAnswer(raw: string): string {
       keywords: ["contacto", "contact", "email", "correo", "linkedin", "github", "telefono", "teléfono", "contratar", "llamar", "red"],
       faces: ["contact"],
       build: () => ({
-        text: `Puedes contactar con Hugo por:\n· Email: ${site.email}\n· LinkedIn: ${site.linkedin}\n· GitHub: ${site.github}`,
+        text: `Puedes contactar con Hugo por:\n· Email: ${site.email}\n· LinkedIn: ${site.linkedin}\n· GitHub: 
+· WhatsApp: `,
       }),
     },
     {

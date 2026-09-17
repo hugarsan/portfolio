@@ -7,6 +7,9 @@ export const site = {
   github: "https://github.com/hugarsan",
   linkedin: "https://www.linkedin.com/in/hugo-garcía-sánchez-92070731b",
   cv: "/cv/CV_Hugo_Garcia_Sanchez_Actualizado.pdf",
+  whatsappHref: "https://wa.me/34654839951?text=Hola%20Hugo%2C%20me%20interesa%20trabajar%20contigo",
+  whatsappLabel: "WhatsApp",
+  whatsappNumber: "654 839 951",
 };
 
 export const hero = {
