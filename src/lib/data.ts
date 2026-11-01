@@ -26,6 +26,8 @@ export const hero = {
 };
 
 export const about = {
+  manifesto:
+    "Soy ingeniero informático y máster en IA. Construyo sistemas de inteligencia artificial que se pueden explicar, desde los datos hasta el despliegue, y hoy lo hago en Stormbringer.",
   paragraphs: [
     "Formación académica en desarrollo de software, arquitecturas web (React, FastAPI, PostgreSQL, Docker) y modelos de IA aplicada: procesamiento del lenguaje natural y LLMs. Experiencia práctica construyendo aplicaciones completas de principio a fin, desde el diseño hasta el despliegue.",
     "Proactivo, autónomo y bien organizado, con capacidad de aprendizaje continuo. Mi prioridad profesional está en la inteligencia artificial, el Machine Learning y los datos, y estoy igualmente cómodo en desarrollo de software.",
@@ -129,6 +131,8 @@ export type Project = {
   github?: string;
   stack: string[];
   year: string;
+  /** Ilustración que acompaña al proyecto en la tarjeta. */
+  visual: "classifier" | "routes" | "trellis";
 };
 
 export const projects: Project[] = [
@@ -147,6 +151,7 @@ export const projects: Project[] = [
       { value: "90,64%", label: "Accuracy" },
       { value: "91,83%", label: "F1" },
     ],
+    visual: "classifier",
     stack: ["Python", "XGBoost", "TF-IDF", "LSTM", "BETO", "LIME", "SHAP", "Gemini", "NLP"],
     year: "2026",
   },
@@ -160,6 +165,7 @@ export const projects: Project[] = [
       "Exploración y procesamiento de los datos de partida: contenedores, flota disponible y restricciones de carretera.",
       "Asistente de IA integrado y módulo propio de evaluación de soluciones.",
     ],
+    visual: "routes",
     stack: ["Python", "Data Analytics", "Optimización", "VRP", "Machine Learning / IA", "Datos de vehículos", "Datos de contenedores", "Data Engineering"],
     year: "2026",
   },
@@ -173,6 +179,7 @@ export const projects: Project[] = [
       "Backend con FastAPI y despliegue en Docker Compose.",
       "Repositorio de TFG disponible en GitHub.",
     ],
+    visual: "trellis",
     stack: ["React", "Vite", "FastAPI", "PostgreSQL", "Docker Compose"],
     year: "2025",
   },

@@ -267,6 +267,54 @@ body {
   stroke-dashoffset: var(--ring-target);
 }
 
+/* ---------- Ilustraciones de proyectos (se animan al revelarse) ---------- */
+
+.bar-grow {
+  width: 0;
+  transition: width 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.3s;
+}
+
+.reveal[data-visible="true"] .bar-grow {
+  width: var(--w);
+}
+
+.route-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 2.4s cubic-bezier(0.65, 0, 0.35, 1) 0.4s;
+}
+
+.reveal[data-visible="true"] .route-draw {
+  stroke-dashoffset: 0;
+}
+
+/* ---------- Brillo holográfico de la tarjeta de Sobre mí ---------- */
+
+.sheen {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background: radial-gradient(
+      circle at var(--sheen-x, 50%) var(--sheen-y, 50%),
+      rgba(255, 255, 255, 0.12),
+      transparent 45%
+    ),
+    linear-gradient(
+      115deg,
+      transparent 20%,
+      rgba(56, 189, 248, 0.1) 40%,
+      rgba(167, 139, 250, 0.12) 50%,
+      rgba(52, 211, 153, 0.08) 60%,
+      transparent 80%
+    );
+  background-size: 100% 100%, 250% 250%;
+  background-position: center, var(--sheen-x, 50%) var(--sheen-y, 50%);
+  mix-blend-mode: screen;
+}
+
+.tilt-card:hover .sheen {
+  opacity: 1;
+}
+
 .badge-dot {
   animation: pulse-glow 2s ease-in-out infinite;
 }
