@@ -3,6 +3,9 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: ["main"]
+  # Recompilado diario (00:15/01:15 en Madrid) para que la edad se actualice sola.
+  schedule:
+    - cron: "15 23 * * *"
   workflow_dispatch:
 
 permissions:
@@ -38,6 +41,8 @@ jobs:
 
       - name: Build static export
         run: npm run build
+        env:
+          BIRTH_DATE: ${{ secrets.BIRTH_DATE }}
 
       - name: Setup Pages
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5

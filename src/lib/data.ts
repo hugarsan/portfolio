@@ -7,6 +7,7 @@ export const site = {
   github: "https://github.com/hugarsan",
   linkedin: "https://www.linkedin.com/in/hugo-garcía-sánchez-92070731b",
   cv: "/cv/CV_Hugo_Garcia_Sanchez_Actualizado.pdf",
+  photo: "/img/hugo.webp",
   whatsappHref: "https://wa.me/34654839951?text=Hola%20Hugo%2C%20me%20interesa%20trabajar%20contigo",
   whatsappLabel: "WhatsApp",
   whatsappNumber: "654 839 951",
@@ -34,7 +35,6 @@ export const about = {
   ],
   facts: [
     { label: "Ubicación", value: "Salamanca · Madrid" },
-    { label: "Edad", value: "23 años" },
     { label: "Puesto actual", value: "Junior AI Engineer · Stormbringer" },
     { label: "Grado (USAL)", value: "Nota media 8,19" },
     { label: "Máster IA (UNIR)", value: "2025–2026 · Completado" },

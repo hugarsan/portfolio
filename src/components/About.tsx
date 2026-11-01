@@ -1,3 +1,4 @@
+import { currentAge } from "@/lib/age";
 import { about, experience, site } from "@/lib/data";
 import CountUp from "@/components/CountUp";
 import Reveal from "@/components/Reveal";
@@ -6,6 +7,10 @@ import Section from "@/components/Section";
 import TiltCard from "@/components/TiltCard";
 
 const current = experience.find((job) => job.current);
+
+// La edad se calcula al compilar; sin fecha configurada, la fila no aparece.
+const age = currentAge();
+const facts = age === null ? about.facts : [about.facts[0], { label: "Edad", value: `${age} años` }, ...about.facts.slice(1)];
 
 // Código de barras decorativo, estable entre renders.
 const bars = Array.from({ length: 42 }, (_, i) => 1 + Math.round(((Math.sin(i * 91.7) + 1) / 2) * 3));
@@ -69,8 +74,17 @@ export default function About() {
                   </div>
 
                   <div className="mt-7 flex items-center gap-5">
-                    <div className="relative flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-accent-400 via-accent-500 to-violet-500 shadow-[0_0_40px_-6px_rgba(56,189,248,0.8)]">
-                      <span className="font-display text-3xl font-bold text-midnight-950">HG</span>
+                    <div className="relative h-24 w-24 shrink-0 rounded-2xl bg-gradient-to-br from-accent-400 via-accent-500 to-violet-500 p-[2px] shadow-[0_0_40px_-6px_rgba(56,189,248,0.8)]">
+                      {/* eslint-disable-next-line @next/next/no-img-element -- exportación estática, sin optimizador de imágenes */}
+                      <img
+                        src={site.photo}
+                        alt={`Foto de ${site.name}`}
+                        width={96}
+                        height={96}
+                        loading="lazy"
+                        decoding="async"
+                        className="h-full w-full rounded-[14px] object-cover"
+                      />
                     </div>
                     <div className="min-w-0">
                       <p className="font-display text-2xl font-bold leading-tight text-slate-100">{site.name}</p>
@@ -81,7 +95,7 @@ export default function About() {
                   </div>
 
                   <dl className="mt-7 space-y-2.5 border-t border-dashed border-midnight-600 pt-5">
-                    {about.facts.map((fact) => (
+                    {facts.map((fact) => (
                       <div key={fact.label} className="flex items-baseline justify-between gap-4">
                         <dt className="font-mono text-[11px] uppercase tracking-wider text-slate-500">{fact.label}</dt>
                         <dd className="text-right text-sm font-medium text-slate-200">{fact.value}</dd>
