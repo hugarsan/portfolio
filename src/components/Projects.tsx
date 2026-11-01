@@ -26,19 +26,19 @@ export default function Projects() {
               className="spotlight group overflow-hidden rounded-[2rem] border border-midnight-600/70 bg-midnight-900 shadow-[0_-20px_60px_-20px_rgba(3,8,15,0.9)]"
             >
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-accent-500/[0.06] via-transparent to-violet-500/[0.06]" aria-hidden="true" />
-              <div className="relative grid gap-8 p-6 md:p-10 lg:grid-cols-[1.1fr_1fr] lg:gap-12">
-                <div className="flex flex-col">
+              <div className="relative grid grid-cols-1 gap-8 p-5 sm:p-6 md:p-10 lg:grid-cols-[1.1fr_1fr] lg:gap-12">
+                <div className="flex min-w-0 flex-col">
                   <div className="flex flex-wrap items-center gap-3">
-                    <span className="gradient-text font-display text-5xl font-bold leading-none md:text-6xl">0{i + 1}</span>
-                    <div className="flex flex-col gap-1.5">
-                      <span className="w-fit rounded-full border border-accent-500/30 bg-accent-500/10 px-3 py-1 font-mono text-xs text-accent-300">
+                    <span className="gradient-text font-display text-4xl font-bold leading-none sm:text-5xl md:text-6xl">0{i + 1}</span>
+                    <div className="flex min-w-0 flex-col gap-1.5">
+                      <span className="w-fit max-w-full rounded-full border border-accent-500/30 bg-accent-500/10 px-3 py-1 font-mono text-xs text-accent-300">
                         {project.tag}
                       </span>
                       <span className="font-mono text-xs text-slate-500">{project.year}</span>
                     </div>
                   </div>
 
-                  <h3 className="font-display mt-6 text-3xl font-bold tracking-tight text-slate-100 md:text-4xl">{project.name}</h3>
+                  <h3 className="font-display mt-6 text-2xl font-bold tracking-tight text-slate-100 [overflow-wrap:anywhere] sm:text-3xl md:text-4xl">{project.name}</h3>
                   <p className="mt-4 leading-7 text-slate-400">{project.summary}</p>
 
                   <ul className="mt-5 space-y-2.5 text-sm leading-6 text-slate-400">
@@ -53,9 +53,9 @@ export default function Projects() {
                   {project.metrics && project.metrics.length > 0 && (
                     <dl className="mt-7 grid grid-cols-3 divide-x divide-midnight-700 rounded-2xl border border-midnight-700 bg-midnight-950/60">
                       {project.metrics.map((metric) => (
-                        <div key={metric.label} className="flex flex-col px-4 py-3">
-                          <dt className="order-2 text-[10px] uppercase tracking-wider text-slate-500">{metric.label}</dt>
-                          <dd className="gradient-text font-display order-1 text-2xl font-bold md:text-3xl">
+                        <div key={metric.label} className="flex min-w-0 flex-col px-3 py-3 sm:px-4">
+                          <dt className="order-2 truncate text-[10px] uppercase tracking-wider text-slate-500">{metric.label}</dt>
+                          <dd className="gradient-text font-display order-1 text-xl font-bold sm:text-2xl md:text-3xl">
                             <CountUp value={metric.value} />
                           </dd>
                         </div>
@@ -85,7 +85,7 @@ export default function Projects() {
                   </div>
                 </div>
 
-                <div className="transition-transform duration-700 group-hover:-translate-y-1">
+                <div className="min-w-0 transition-transform duration-700 group-hover:-translate-y-1">
                   <ProjectVisual kind={project.visual} />
                 </div>
               </div>

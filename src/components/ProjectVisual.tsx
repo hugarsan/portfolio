@@ -6,15 +6,15 @@ import type { Project } from "@/lib/data";
 
 function Frame({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <div className="relative flex h-full min-h-[18rem] flex-col overflow-hidden rounded-2xl border border-midnight-600/70 bg-midnight-950/80">
+    <div className="relative flex h-full min-h-[16rem] min-w-0 flex-col overflow-hidden rounded-2xl border border-midnight-600/70 bg-midnight-950/80">
       <div className="flex items-center gap-2 border-b border-midnight-700/80 px-4 py-2.5 font-mono text-[11px] text-slate-500">
         <span className="h-2 w-2 rounded-full bg-rose-400/70" />
         <span className="h-2 w-2 rounded-full bg-amber-300/70" />
         <span className="h-2 w-2 rounded-full bg-emerald-400/70" />
-        <span className="ml-2 truncate">{title}</span>
+        <span className="ml-2 min-w-0 truncate">{title}</span>
         <span className="ml-auto shrink-0 text-slate-700">ilustración</span>
       </div>
-      <div className="grid-overlay relative flex-1 p-5">{children}</div>
+      <div className="grid-overlay relative flex-1 p-4 sm:p-5">{children}</div>
     </div>
   );
 }
@@ -54,7 +54,7 @@ function Classifier() {
       <div className="mt-3 space-y-2">
         {TOKENS.map((t, i) => (
           <div key={t.word} className="flex items-center gap-3 font-mono text-[11px]">
-            <span className="w-28 shrink-0 truncate text-slate-400">{t.word}</span>
+            <span className="w-24 shrink-0 truncate text-slate-400 sm:w-28">{t.word}</span>
             <div className="h-2 flex-1 overflow-hidden rounded-full bg-midnight-800">
               <div
                 className={`bar-grow h-full rounded-full ${t.fake ? "bg-rose-400/80" : "bg-accent-400/80"}`}
@@ -85,7 +85,7 @@ const ROUTE = "M 10 140 L 30 120 L 30 30 L 150 30 L 150 80 L 90 80 L 90 120 L 10
 function Routes() {
   return (
     <Frame title="rutas/optimizar.py --criterio llenado,co2">
-      <svg viewBox="0 0 180 150" className="h-full w-full" aria-hidden="true">
+      <svg viewBox="0 0 180 150" className="mx-auto block h-auto w-full max-w-[22rem]" aria-hidden="true">
         {[30, 90, 150].map((x) => (
           <line key={`v${x}`} x1={x} y1="10" x2={x} y2="140" stroke="rgba(148,163,184,0.18)" strokeWidth="5" strokeLinecap="round" />
         ))}
@@ -105,7 +105,7 @@ function Routes() {
           <animateMotion dur="7s" repeatCount="indefinite" path={ROUTE} />
         </circle>
       </svg>
-      <div className="absolute bottom-4 left-5 right-5 flex flex-wrap gap-x-4 gap-y-1 font-mono text-[10px] text-slate-500">
+      <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 font-mono text-[10px] text-slate-500">
         <span className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-rose-400" /> llenado alto (se visita)</span>
         <span className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-slate-500" /> se deja para otra ruta</span>
       </div>
@@ -126,7 +126,7 @@ function Trellis() {
   const path = SURVIVOR.map((s, t) => `${t === 0 ? "M" : "L"} ${sx(t)} ${sy(s)}`).join(" ");
   return (
     <Frame title="viterbi/decode — K=3, tasa 1/2">
-      <svg viewBox="0 0 192 140" className="h-full w-full" aria-hidden="true">
+      <svg viewBox="0 0 192 140" className="mx-auto block h-auto w-full max-w-[24rem]" aria-hidden="true">
         {Array.from({ length: STEPS }, (_, t) =>
           Array.from({ length: STATES }, (_, s) =>
             [(s * 2) % STATES, (s * 2 + 1) % STATES].map((n) => (
