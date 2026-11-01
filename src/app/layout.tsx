@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import { site } from "@/lib/data";
+import FrameGuard from "@/components/FrameGuard";
 import Intro from "@/components/Intro";
 import "./globals.css";
 
@@ -29,6 +30,7 @@ export const metadata: Metadata = {
   },
   description,
   applicationName: "hugarsan",
+  referrer: "strict-origin-when-cross-origin",
   authors: [{ name: site.name, url: site.github }],
   keywords: [
     "Hugo García",
@@ -62,6 +64,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
+        <FrameGuard />
         <Intro />
         {children}
       </body>

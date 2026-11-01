@@ -302,6 +302,7 @@ export default function NeuralNebula() {
               onChange={(e) => setQuestion(e.target.value)}
               placeholder="Escribe una pregunta…"
               aria-label="Pregunta a Hugo AI"
+              maxLength={200}
               className="min-w-0 flex-1 bg-transparent font-mono text-sm text-slate-200 placeholder:text-slate-600 focus:outline-none"
             />
             <button type="submit" className="rounded-lg bg-accent-500/15 px-3 py-1.5 font-mono text-xs text-accent-300 transition-colors hover:bg-accent-500/25">

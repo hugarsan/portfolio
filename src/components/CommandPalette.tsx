@@ -151,6 +151,7 @@ export default function CommandPalette() {
                 }}
                 placeholder="Busca una sección, proyecto o acción…"
                 aria-label="Buscar comando"
+              maxLength={200}
                 className="h-14 flex-1 bg-transparent font-mono text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none"
               />
               <kbd className="rounded border border-midnight-600 px-1.5 py-0.5 font-mono text-[10px] text-slate-500">ESC</kbd>
