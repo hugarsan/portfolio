@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { OPEN_PALETTE_EVENT } from "@/components/CommandPalette";
 import { MenuIcon, XIcon } from "@/components/icons";
 
 const links = [
@@ -46,11 +47,19 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new Event(OPEN_PALETTE_EVENT))}
+            aria-label="Abrir paleta de comandos"
+            className="flex items-center gap-1 rounded-lg border border-midnight-600 px-2 py-1 font-mono text-[11px] text-slate-400 transition-colors hover:border-accent-500/50 hover:text-accent-300"
+          >
+            Ctrl K
+          </button>
           <a
             href="#contacto"
             className="rounded-lg border border-accent-500/40 px-4 py-1.5 text-sm text-accent-300 transition-colors hover:bg-accent-500/10"
           >
-            Contratar
+            Hablemos
           </a>
         </div>
         <button

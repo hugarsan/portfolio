@@ -1,8 +1,8 @@
 export const site = {
   name: "Hugo García Sánchez",
   username: "hugarsan",
-  title: "Ingeniero Informático · AI Engineer Junior",
-  location: "Salamanca, España",
+  title: "Ingeniero Informático · Junior AI Engineer",
+  location: "Salamanca · Madrid, España",
   email: "hugarsan@gmail.com",
   github: "https://github.com/hugarsan",
   linkedin: "https://www.linkedin.com/in/hugo-garcía-sánchez-92070731b",
@@ -13,10 +13,16 @@ export const site = {
 };
 
 export const hero = {
-  badge: "Disponible para nuevas oportunidades",
-  roleTitle: "Ingeniero Informático · Máster en Inteligencia Artificial",
+  badge: "Junior AI Engineer en Stormbringer · desde oct 2026",
+  roleTitle: "Junior AI Engineer",
+  roles: [
+    "Junior AI Engineer @ Stormbringer",
+    "Ingeniero Informático · USAL",
+    "Máster en Inteligencia Artificial · UNIR",
+    "LLMs · agentes · datos",
+  ],
   description:
-    "Graduado en Ingeniería Informática por la Universidad de Salamanca y Máster en Inteligencia Artificial por UNIR. Actualmente busco mi primera oportunidad profesional en IA, datos o desarrollo de software.",
+    "Desde octubre de 2026 trabajo como Junior AI Engineer en Stormbringer, construyendo una plataforma soberana de inteligencia de decisión. Graduado en Ingeniería Informática por la Universidad de Salamanca y Máster en Inteligencia Artificial por UNIR.",
 };
 
 export const about = {
@@ -25,11 +31,11 @@ export const about = {
     "Proactivo, autónomo y bien organizado, con capacidad de aprendizaje continuo. Mi prioridad profesional está en la inteligencia artificial, el Machine Learning y los datos, y estoy igualmente cómodo en desarrollo de software.",
   ],
   facts: [
-    { label: "Ubicación", value: "Salamanca, España" },
+    { label: "Ubicación", value: "Salamanca · Madrid" },
     { label: "Edad", value: "23 años" },
+    { label: "Puesto actual", value: "Junior AI Engineer · Stormbringer" },
     { label: "Grado (USAL)", value: "Nota media 8,19" },
     { label: "Máster IA (UNIR)", value: "2025–2026 · Completado" },
-    { label: "Disponibilidad", value: "Abierto a nuevos retos" },
   ],
   stats: [
     { value: "3", label: "Proyectos finales" },
@@ -39,7 +45,7 @@ export const about = {
   ],
   roles: {
     intro:
-      "Busco mi primera oportunidad profesional en inteligencia artificial, Machine Learning, datos o desarrollo de software, donde pueda aportar valor desde el primer día y seguir creciendo.",
+      "Desde octubre de 2026 soy Junior AI Engineer en Stormbringer, donde trabajo en una plataforma soberana de inteligencia de decisión: agentes con LLMs, datos y despliegue en Kubernetes.",
     areas: [
       "AI Engineer",
       "Machine Learning",
@@ -68,6 +74,8 @@ export const skills = {
         "Machine Learning",
         "NLP",
         "LLMs",
+        "Agentes",
+        "Fine-tuning",
         "Gemini",
         "XGBoost",
         "TensorFlow",
@@ -90,7 +98,7 @@ export const skills = {
     {
       title: "Tools & DevOps",
       icon: "tool",
-      items: ["Git", "GitHub", "GitHub Actions", "Docker", "Docker Compose", "Linux", "macOS", "Terminal"],
+      items: ["Git", "GitHub", "GitHub Actions", "Docker", "Docker Compose", "Kubernetes", "Linux", "macOS", "Terminal"],
     },
   ],
   competencies: [
@@ -176,13 +184,25 @@ export type ExperienceItem = {
   period: string;
   location: string;
   highlight?: boolean;
+  current?: boolean;
   description: string;
   tags: string[];
 };
 
 export const experience: ExperienceItem[] = [
   {
-    role: "Prácticas de Máster — IA",
+    role: "Junior AI Engineer",
+    company: "Stormbringer",
+    period: "oct 2026 → actualidad",
+    location: "Madrid · Híbrido",
+    highlight: true,
+    current: true,
+    description:
+      "Desarrollo de una plataforma soberana de IA para la toma de decisiones (Sovereign Decision Intelligence): agentes basados en LLMs, capa de datos, fine-tuning de modelos y despliegue en Kubernetes, trabajando por iteraciones con verificación de extremo a extremo.",
+    tags: ["LLMs", "Agentes", "Fine-tuning", "Kubernetes", "Python", "React"],
+  },
+  {
+    role: "AI Engineer — Prácticas de Máster",
     company: "AI Talentum",
     period: "abr 2026 → jun 2026",
     location: "Salamanca · Remoto",
@@ -204,7 +224,7 @@ export const experience: ExperienceItem[] = [
   {
     role: "Camarero — Eventos",
     company: "Hospes Palacio de San Esteban",
-    period: "may 2025 → actualidad",
+    period: "may 2025 → sep 2026",
     location: "Salamanca",
     highlight: false,
     description:
@@ -214,21 +234,11 @@ export const experience: ExperienceItem[] = [
   {
     role: "Camarero — Eventos",
     company: "NH Hoteles",
-    period: "sep 2024 → actualidad",
+    period: "sep 2024 → sep 2026",
     location: "Salamanca · Eventos",
     highlight: false,
     description:
       "Servicio de eventos (bodas, comuniones y eventos corporativos) trabajando bajo presión y en equipo.",
-    tags: [],
-  },
-  {
-    role: "Camarero — Eventos",
-    company: "Hacienda Zorita (Hotel 5★ Superior)",
-    period: "abr 2022 → feb 2025",
-    location: "Valverdón, Salamanca",
-    highlight: false,
-    description:
-      "Años de experiencia en logística y servicio de eventos, compatibilizando el trabajo con la carrera universitaria.",
     tags: [],
   },
 ];
@@ -267,20 +277,33 @@ export const courses: CourseItem[] = [
   { title: "NLP con Python", institution: "UNIR", year: "2026" },
 ];
 
-export type AICoreLink = {
+export type AICoreNode = {
   id: string;
   label: string;
+  summary: string;
   areas: string[];
   href: string;
-  kind: "hub" | "project";
+  kind: "hub" | "project" | "now";
+  /** Ids de los hubs con los que se conecta, además del núcleo. */
+  links?: string[];
 };
 
-export type AICoreNode = AICoreLink;
-
+// El orden de los hubs fija su posición en la elipse, empezando arriba y en sentido horario.
 export const aiCoreNodes: AICoreNode[] = [
+  {
+    id: "stormbringer",
+    label: "STORMBRINGER",
+    summary:
+      "Mi trabajo actual (desde oct 2026, Madrid · híbrido): Junior AI Engineer en una plataforma soberana de inteligencia de decisión, con agentes LLM, datos y Kubernetes.",
+    areas: ["LLMs", "Agentes", "Fine-tuning", "Kubernetes", "Python", "React"],
+    href: "#experiencia",
+    kind: "now",
+    links: ["ai-ml", "data", "software"],
+  },
   {
     id: "ai-ml",
     label: "AI & MACHINE LEARNING",
+    summary: "NLP, LLMs y modelos clásicos y profundos, con foco en que las predicciones se puedan explicar.",
     areas: ["NLP", "LLMs", "XGBoost", "LSTM", "BETO", "LIME", "SHAP"],
     href: "#habilidades",
     kind: "hub",
@@ -288,13 +311,15 @@ export const aiCoreNodes: AICoreNode[] = [
   {
     id: "data",
     label: "DATA",
-    areas: ["Python", "Data Analytics", "Optimización", "Datos"],
+    summary: "Exploración, limpieza y modelado de datos reales para optimizar decisiones.",
+    areas: ["Python", "Data Analytics", "Optimización", "SQL"],
     href: "#habilidades",
     kind: "hub",
   },
   {
     id: "software",
     label: "SOFTWARE",
+    summary: "Aplicaciones completas de principio a fin: frontend, API, base de datos y despliegue.",
     areas: ["React", "TypeScript", "Next.js", "FastAPI", "Docker"],
     href: "#habilidades",
     kind: "hub",
@@ -302,60 +327,70 @@ export const aiCoreNodes: AICoreNode[] = [
   {
     id: "projects-hub",
     label: "PROJECTS",
+    summary: "Tres proyectos finales: detección de fake news, rutas de recogida y códigos convolucionales.",
     areas: ["DetectIA", "Rutas optimizadas", "Códigos conv."],
     href: "#proyectos",
     kind: "hub",
   },
   {
-    id: "experience",
-    label: "EXPERIENCE",
-    areas: ["AI Talentum", "AIR Institute", "Hostelería"],
-    href: "#experiencia",
+    id: "skills",
+    label: "SKILLS",
+    summary: "Cuatro áreas técnicas, tres idiomas y las competencias de quien ha trabajado bajo presión.",
+    areas: ["4 áreas", "3 idiomas", "Trabajo en equipo"],
+    href: "#habilidades",
     kind: "hub",
   },
   {
     id: "education",
     label: "EDUCATION",
-    areas: ["Máster IA UNIR", "Grado USAL"],
+    summary: "Grado en Ingeniería Informática (USAL, nota media 8,19) y Máster en Inteligencia Artificial (UNIR).",
+    areas: ["Máster IA UNIR", "Grado USAL", "Cursos UNIR"],
     href: "#experiencia",
     kind: "hub",
   },
   {
-    id: "skills",
-    label: "SKILLS",
-    areas: ["4 áreas", "3 idiomas", "Herramientas"],
-    href: "#habilidades",
+    id: "experience",
+    label: "EXPERIENCE",
+    summary: "De la investigación en ciberseguridad con IA a las prácticas como AI Engineer y mi puesto actual.",
+    areas: ["Stormbringer", "AI Talentum", "AIR Institute"],
+    href: "#experiencia",
     kind: "hub",
   },
   {
     id: "detectia",
     label: "DetectIA",
-    areas: ["XGBoost", "LSTM", "BETO", "LIME", "SHAP", "Gemini", "NLP"],
+    summary: "TFM: detección de noticias falsas en español con ML, DL y explicaciones generadas con Gemini. 90,64 % de accuracy.",
+    areas: ["XGBoost", "LSTM", "BETO", "LIME", "SHAP", "Gemini"],
     href: "#proyectos",
     kind: "project",
+    links: ["ai-ml"],
   },
   {
     id: "rutas",
     label: "Rutas optimizadas",
-    areas: ["Python", "Data", "VRP", "Datos contenedores"],
+    summary: "Prácticas en AI Talentum: rutas de recogida de residuos sobre redes viarias reales, con llenado y CO2.",
+    areas: ["Python", "VRP", "Optimización", "Datos"],
     href: "#proyectos",
     kind: "project",
+    links: ["data"],
   },
   {
     id: "viterbi",
-    label: "Códigos conv. + Viterbi",
+    label: "Viterbi",
+    summary: "TFG: aplicación web para estudiar códigos convolucionales y el algoritmo de Viterbi.",
     areas: ["React", "Vite", "FastAPI", "PostgreSQL", "Docker"],
     href: "#proyectos",
     kind: "project",
+    links: ["software"],
   },
 ];
 
 export const aiCore = {
-  sectionIndex: "00",
+  sectionIndex: "05",
   sectionTag: "explora_hugo_ai",
   title: "Explore Hugo AI",
   subtitle:
-    "Una representación interactiva de mi experiencia, proyectos y conocimientos. Mueve el cursor por la nebulosa, pasa por los nodos y haz clic para explorar.",
+    "Un mapa vivo de lo que sé hacer y de dónde lo he aprendido. Toca un nodo para ver sus conexiones o pregúntale directamente a Hugo AI.",
   coreLabel: "HUGO AI",
   coreSubtext: "núcleo · hugarsan",
   canvasLabel: "Hugo AI · Representación neuronal interactiva",
@@ -370,11 +405,11 @@ export const chat = {
   greeting:
     "Hola, soy Hugo AI.\nPuedo contarte sobre la experiencia, proyectos, formación y tecnologías de Hugo.",
   suggestions: [
+    "¿Dónde trabaja ahora?",
     "¿Quién es Hugo?",
     "¿Qué experiencia tiene en IA?",
     "¿Qué proyectos ha desarrollado?",
     "¿Qué tecnologías utiliza?",
-    "¿Qué tipo de trabajo busca?",
   ],
   placeholders: [
     "¿Quién es Hugo?",
@@ -385,5 +420,5 @@ export const chat = {
     "¿Cómo contacto con Hugo?",
   ],
   fallback:
-    "Hugo AI está en modo sin conexión. Pregúntame sobre su formación, experiencia, proyectos, tecnologías o contacto.",
+    "No tengo respuesta para eso. Pregúntame por su trabajo en Stormbringer, su formación, experiencia, proyectos, tecnologías o contacto.",
 };

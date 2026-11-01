@@ -20,7 +20,7 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
 });
 
-const description = `${site.name} — Ingeniero Informático y Máster en Inteligencia Artificial (AI Engineer Junior). Desarrollo de software, aplicaciones de IA, Machine Learning y análisis de datos: React, FastAPI, PostgreSQL, Docker, Python y LLMs.`;
+const description = `${site.name} — Ingeniero Informático y Máster en Inteligencia Artificial (Junior AI Engineer en Stormbringer). Desarrollo de software, aplicaciones de IA, Machine Learning y análisis de datos: React, FastAPI, PostgreSQL, Docker, Python y LLMs.`;
 
 export const metadata: Metadata = {
   title: {

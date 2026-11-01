@@ -1,13 +1,8 @@
 import { chat, courses, education, experience, projects, site, skills } from "@/lib/data";
 
-type Face = "site" | "hero" | "projects" | "experience" | "education" | "skills" | "ai" | "contact";
-
-type Answer = { text: string; next?: Face[]; href?: string };
-
 type Topic = {
   keywords: string[];
-  faces: Face[];
-  build: () => Answer;
+  build: () => string;
 };
 
 const norm = (s: string) =>
@@ -16,96 +11,63 @@ const norm = (s: string) =>
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "");
 
-const projectLines = () =>
-  projects
-    .map((p) => `▹ ${p.name} (${p.year}) — ${p.summary}`)
-    .join("\n");
+const current = experience.find((e) => e.current);
 
-const experienceLines = () =>
-  experience
-    .map((e) => `${e.role} · ${e.company} (${e.period})`)
-    .join("\n");
+const projectLines = () => projects.map((p) => `▹ ${p.name} (${p.year}): ${p.summary}`).join("\n");
 
-const educationLines = () =>
-  education.map((e) => `${e.title} — ${e.institution} (${e.period})`).join("\n");
+const experienceLines = () => experience.map((e) => `▹ ${e.role} · ${e.company} (${e.period})`).join("\n");
 
-const courseLines = () =>
-  courses.map((c) => `${c.title} — ${c.institution} (${c.year})`).join("\n");
+const educationLines = () => education.map((e) => `▹ ${e.title} · ${e.institution} (${e.period})`).join("\n");
 
-const skillLines = () =>
-  skills.categories
-    .map(
-      (cat) => `▸ ${cat.title}: ${cat.items.join(", ")}`
-    )
-    .join("\n");
+const courseLines = () => courses.map((c) => `▹ ${c.title} · ${c.institution} (${c.year})`).join("\n");
+
+const skillLines = () => skills.categories.map((cat) => `▸ ${cat.title}: ${cat.items.join(", ")}`).join("\n");
+
+const currentLine = () =>
+  current ? `Desde octubre de 2026 trabaja como ${current.role} en ${current.company} (${current.location}). ${current.description}` : "";
+
+// El orden importa: gana el primer tema cuyas palabras clave aparezcan en la pregunta.
+const topics: Topic[] = [
+  {
+    keywords: ["stormbringer", "ahora", "actual", "donde trabaja", "empresa", "empleo"],
+    build: currentLine,
+  },
+  {
+    keywords: ["quien", "who", "es hugo", "presentate", "biograf"],
+    build: () =>
+      `${site.name} es ${site.title}, de ${site.location}. ${currentLine()}\n\nFormación:\n${educationLines()}`,
+  },
+  {
+    keywords: ["proyecto", "project", "detectia", "fake", "viterbi", "convolucional", "rutas", "residuos", "tfg", "tfm"],
+    build: () => `Estos son sus proyectos más relevantes:\n${projectLines()}\n\nMás en su GitHub: ${site.github}`,
+  },
+  {
+    keywords: ["tecnolog", "stack", "lenguaje", "herramienta", "python", "react", "typescript", "docker", "fastapi", "kubernetes"],
+    build: () => `Tecnologías que usa:\n${skillLines()}`,
+  },
+  {
+    keywords: ["formacion", "master", "grado", "educacion", "estudi", "carrera", "unir", "usal", "curso", "nota"],
+    build: () => `Formación:\n${educationLines()}\n\nCursos:\n${courseLines()}`,
+  },
+  {
+    keywords: ["experiencia", "trabajo", "trayectoria", "profesional", "practica", "ia", "ai", "inteligencia", "machine"],
+    build: () => `Trayectoria profesional:\n${experienceLines()}\n\n${currentLine()}`,
+  },
+  {
+    keywords: ["contacto", "contact", "email", "correo", "linkedin", "github", "telefono", "whatsapp", "llamar"],
+    build: () =>
+      `Puedes contactar con Hugo por:\n· Email: ${site.email}\n· WhatsApp: ${site.whatsappNumber}\n· LinkedIn: ${site.linkedin}\n· GitHub: ${site.github}`,
+  },
+  {
+    keywords: ["habilidad", "idioma", "ingles", "frances", "competencia", "skill"],
+    build: () =>
+      `Idiomas: ${skills.languages.map((l) => `${l.name} (${l.level})`).join(", ")}.\nCompetencias: ${skills.competencies.join(", ")}.`,
+  },
+];
 
 export function getAnswer(raw: string): string {
   const q = norm(raw);
-  if (!q) return chat.greeting;
-
-  const topics: Topic[] = [
-    {
-      keywords: ["quien", "who", "soy", "eres", "es hugo", "presentate"],
-      faces: ["site"],
-      build: () => ({
-        text: `${site.name} es un ${site.title.replace(/\s+/g, " ")} afincado en ${site.location}. ${educationLines()}`,
-      }),
-    },
-    {
-      keywords: ["ia", "ai", "inteligencia", "machine", "ml", "telecom", "data scientist", "buscar", "oportunidad", "puesto", "empleo", "trabajo busca"],
-      faces: ["experience", "ai"],
-      build: () => ({
-        text: `Hugo busca su primera oportunidad profesional en IA, Machine Learning, datos o desarrollo de software. Su experiencia en IA incluye:\n${experienceLines()}`,
-      }),
-    },
-    {
-      keywords: ["proyecto", "project", "desarrollado", "detectia", "detect", "fake", "viterbi", "convolutional", "rutas", "residuos", "tfg", "tfm"],
-      faces: ["projects"],
-      build: () => ({
-        text: `Estos son los proyectos más relevantes:\n${projectLines()}\nTodos disponibles en su GitHub: ${site.github}`,
-      }),
-    },
-    {
-      keywords: ["tecnologia", "tecnolog", "stack", "lenguaje", "lenguajes", "herramienta", "instrumento", "python", "react", "typescript", "docker", "fastapi"],
-      faces: ["skills"],
-      build: () => ({
-        text: `Áreas de conocimiento de Hugo:\n${skillLines()}`,
-      }),
-    },
-    {
-      keywords: ["formacion", "formación", "formacion", "formación", "master", "máster", "grado", "educacion", "educación", "estudio", "carrera", "unir", "usal", "curso", "nota", "media"],
-      faces: ["education"],
-      build: () => ({
-        text: `Formación de Hugo:\n${educationLines()}\nCursos:\n${courseLines()}`,
-      }),
-    },
-    {
-      keywords: ["experiencia", "trabajo", "trayectoria", "profesional", "camarero", "evento", "hotel", "hosteleria", "hostelería", "practica", "prácticas"],
-      faces: ["experience"],
-      build: () => ({
-        text: `Trayectoria profesional:\n${experienceLines()}\n${site.name} combina la formación con el trabajo en eventos y el servicio en hoteles de alta gama, lo que le aporta adaptabilidad, ritmo y trabajo en equipo bajo presión.`,
-      }),
-    },
-    {
-      keywords: ["contacto", "contact", "email", "correo", "linkedin", "github", "telefono", "teléfono", "contratar", "llamar", "red"],
-      faces: ["contact"],
-      build: () => ({
-        text: `Puedes contactar con Hugo por:\n· Email: ${site.email}\n· LinkedIn: ${site.linkedin}\n· GitHub: 
-· WhatsApp: `,
-      }),
-    },
-    {
-      keywords: ["habilidades", "conocimiento", "idioma", "idiomas", "espa", "ingles", "inglés", "frances", "francés", "fortaleza", "skill"],
-      faces: ["skills"],
-      build: () => ({
-        text: `Competencias y tecnologías de Hugo:\n${skillLines()}\nIdiomas: ${skills.languages.map((l) => `${l.name} (${l.level}${l.pct ? ` ${l.pct}%` : ""})`).join(", ")}`,
-      }),
-    },
-  ];
-
+  if (!q.trim()) return chat.greeting;
   const topic = topics.find((t) => t.keywords.some((k) => q.includes(k)));
-
-  return topic
-    ? topic.build().text
-    : chat.fallback;
+  return topic ? topic.build() : chat.fallback;
 }

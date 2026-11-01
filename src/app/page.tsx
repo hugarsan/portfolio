@@ -8,10 +8,13 @@ import HugoAICore from "@/components/HugoAICore";
 import HugoChat from "@/components/HugoChat";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import PointerEffects from "@/components/PointerEffects";
+import CommandPalette from "@/components/CommandPalette";
 
 export default function Home() {
   return (
     <div className="site-glow">
+      <PointerEffects />
       <Navbar />
       <main className="flex-1">
         <Hero />
@@ -23,6 +26,7 @@ export default function Home() {
         <Contact />
       </main>
       <HugoChat />
+      <CommandPalette />
       <Footer />
     </div>
   );

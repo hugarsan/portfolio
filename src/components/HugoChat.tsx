@@ -2,35 +2,10 @@
 
 import { useState } from "react";
 
+import { getAnswer } from "@/lib/chatbot";
 import { chat } from "@/lib/data";
 
 type Message = { role: "user" | "bot"; text: string };
-
-function replyFor(input: string): string {
-  const q = input.toLowerCase();
-
-  if (/(quien es|quién es|presenta|biograf)/.test(q)) {
-    return "Hugo es un ingeniero especializado en inteligencia artificial, análisis de datos y desarrollo de software. Vive en Extremadura, España.";
-  }
-
-  if (/(experiencia|trabajo|curriculum)/.test(q)) {
-    return "Hugo tiene experiencia como AI Engineer en Talentum Startups / AIR Institute y como desarrollador. Échale un vistazo a la sección Experiencia.";
-  }
-
-  if (/(proyecto|desarroll)/.test(q)) {
-    return "Proyectos destacados: DetectIA (detección de noticias falsas con IA), Rutas de datos optimizadas (VRP) y códigos convolucionales con Viterbi. Explora la sección Proyectos.";
-  }
-
-  if (/(tecnolog|stack|herramienta)/.test(q)) {
-    return "Trabaja con Python, TypeScript, Next.js, React, FastAPI, Docker, XGBoost, LSTM y transformers (BETO). Detalle en Habilidades.";
-  }
-
-  if (/(contacto|contactar|email|mail|escribir)/.test(q)) {
-    return "Puedes escribirle a través de la sección Contacto del portfolio. ¡Gracias por tu interés!";
-  }
-
-  return chat.fallback;
-}
 
 export default function HugoChat() {
   const [open, setOpen] = useState(false);
@@ -43,7 +18,7 @@ export default function HugoChat() {
     setMessages((prev) => [...prev, { role: "user", text }]);
     setInput("");
     window.setTimeout(() => {
-      setMessages((prev) => [...prev, { role: "bot", text: replyFor(text) }]);
+      setMessages((prev) => [...prev, { role: "bot", text: getAnswer(text) }]);
     }, 350);
   };
 
@@ -97,7 +72,7 @@ export default function HugoChat() {
                     window.setTimeout(() => {
                       setMessages((prev) => [
                         ...prev,
-                        { role: "bot", text: replyFor(s) },
+                        { role: "bot", text: getAnswer(s) },
                       ]);
                     }, 350);
                   }}
