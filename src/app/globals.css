@@ -237,6 +237,36 @@ body {
   animation: dash-flow 3s linear infinite;
 }
 
+/* ---------- Órbita del stack ---------- */
+
+.orbit-ring {
+  animation: orbit-spin var(--orbit-duration, 40s) linear infinite;
+}
+
+/* Cada chip gira al revés que su anillo para quedarse siempre derecho. */
+.orbit-ring .orbit-chip {
+  animation: orbit-spin var(--orbit-duration, 40s) linear infinite reverse;
+}
+
+.orbit-ring.is-reverse {
+  animation-direction: reverse;
+}
+
+.orbit-ring.is-reverse .orbit-chip {
+  animation-direction: normal;
+}
+
+/* ---------- Anillos de idiomas (se rellenan al revelarse) ---------- */
+
+.ring-progress {
+  stroke-dashoffset: var(--ring-full);
+  transition: stroke-dashoffset 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.3s;
+}
+
+.reveal[data-visible="true"] .ring-progress {
+  stroke-dashoffset: var(--ring-target);
+}
+
 .badge-dot {
   animation: pulse-glow 2s ease-in-out infinite;
 }
@@ -313,6 +343,12 @@ body {
 @keyframes dash-flow {
   to {
     stroke-dashoffset: -20;
+  }
+}
+
+@keyframes orbit-spin {
+  to {
+    transform: rotate(360deg);
   }
 }
 
