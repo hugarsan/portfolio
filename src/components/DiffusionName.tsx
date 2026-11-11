@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 
 const STEPS = 50;
 const DURATION = 2200; // ms de la generación completa
@@ -249,25 +249,29 @@ export default function DiffusionName({ lines, className = "" }: { lines: Line[]
   };
 
   return (
-    <h1 ref={h1Ref} onPointerMove={onMove} className={`relative ${className}`}>
-      {lines.map((line, i) => (
-        <span
-          key={line.text}
-          ref={(el) => {
-            lineRefs.current[i] = el;
-          }}
-          className={`block transition-opacity duration-200 ${line.className ?? ""}`}
-          style={{ opacity: textOn ? 1 : 0 }}
-        >
-          {line.text}
-        </span>
-      ))}
-      <canvas
-        ref={canvasRef}
-        aria-hidden="true"
-        className="pointer-events-none absolute transition-opacity duration-200"
-        style={{ left: -PAD, top: -PAD, opacity: textOn ? 0 : 1 }}
-      />
+    <div className="relative">
+      <h1 ref={h1Ref} onPointerMove={onMove} className={`relative ${className}`}>
+        {lines.map((line, i) => (
+          <Fragment key={line.text}>
+            {i > 0 && " "}
+            <span
+              ref={(el) => {
+                lineRefs.current[i] = el;
+              }}
+              className={`block transition-opacity duration-200 ${line.className ?? ""}`}
+              style={{ opacity: textOn ? 1 : 0 }}
+            >
+              {line.text}
+            </span>
+          </Fragment>
+        ))}
+        <canvas
+          ref={canvasRef}
+          aria-hidden="true"
+          className="pointer-events-none absolute transition-opacity duration-200"
+          style={{ left: -PAD, top: -PAD, opacity: textOn ? 0 : 1 }}
+        />
+      </h1>
       <span
         aria-hidden="true"
         className="pointer-events-none absolute -bottom-5 left-1 whitespace-nowrap font-mono text-[11px] font-normal tracking-normal text-slate-500"
@@ -275,6 +279,6 @@ export default function DiffusionName({ lines, className = "" }: { lines: Line[]
         {readout}
         {hoverable && readout.endsWith("✓") && <span className="text-slate-600"> · pasa el ratón para añadir ruido</span>}
       </span>
-    </h1>
+    </div>
   );
 }
