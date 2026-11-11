@@ -33,6 +33,7 @@ export default function CommandPalette() {
       { id: "inicio", group: "Ir a", label: "Inicio", run: () => go("#inicio") },
       { id: "sobre", group: "Ir a", label: "Sobre mí", run: () => go("#sobre-mi") },
       { id: "stack", group: "Ir a", label: "Habilidades", run: () => go("#habilidades") },
+      { id: "lab", group: "Ir a", label: "Laboratorio: red neuronal en vivo", run: () => go("#laboratorio") },
       { id: "proyectos", group: "Ir a", label: "Proyectos", run: () => go("#proyectos") },
       { id: "exp", group: "Ir a", label: "Experiencia · Stormbringer", run: () => go("#experiencia") },
       { id: "ai", group: "Ir a", label: "Explorar Hugo AI", run: () => go("#hugo-ai") },

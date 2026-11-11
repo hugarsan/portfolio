@@ -96,10 +96,11 @@ export default function Hero() {
             </Magnetic>
             <Magnetic>
               <a
-                href="#proyectos"
-                className="block rounded-xl border border-midnight-600 bg-midnight-900/60 px-7 py-3.5 text-center text-sm font-semibold text-slate-200 backdrop-blur transition-colors hover:border-accent-500/50 hover:text-accent-300"
+                href="#laboratorio"
+                className="flex items-center justify-center gap-2 rounded-xl border border-emerald-400/40 bg-emerald-400/10 px-7 py-3.5 text-center text-sm font-semibold text-emerald-200 backdrop-blur transition-colors hover:border-emerald-300/70 hover:text-emerald-100"
               >
-                Ver proyectos
+                <span className="badge-dot inline-block h-2 w-2 rounded-full bg-emerald-400" />
+                Probar la IA en vivo
               </a>
             </Magnetic>
             <Magnetic>

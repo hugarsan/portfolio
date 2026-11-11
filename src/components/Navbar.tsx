@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import { OPEN_PALETTE_EVENT } from "@/components/CommandPalette";
 import { MenuIcon, XIcon } from "@/components/icons";
 
-const links = [
+const links: { href: string; label: string; live?: boolean }[] = [
+  { href: "#laboratorio", label: "Lab", live: true },
   { href: "#sobre-mi", label: "Sobre mí" },
   { href: "#habilidades", label: "Habilidades" },
   { href: "#proyectos", label: "Proyectos" },
@@ -37,13 +38,14 @@ export default function Navbar() {
           hugarsan
           <span className="ml-0.5 inline-block h-4 w-2 animate-[blink_1s_steps(1)_infinite] bg-accent-400" />
         </a>
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-6 lg:flex xl:gap-8">
           {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-slate-400 transition-colors hover:text-accent-400"
+              className="flex items-center gap-1.5 whitespace-nowrap text-sm text-slate-400 transition-colors hover:text-accent-400"
             >
+              {link.live && <span className="badge-dot inline-block h-1.5 w-1.5 rounded-full bg-emerald-400" />}
               {link.label}
             </a>
           ))}
@@ -57,7 +59,7 @@ export default function Navbar() {
           </button>
           <a
             href="#contacto"
-            className="rounded-lg border border-accent-500/40 px-4 py-1.5 text-sm text-accent-300 transition-colors hover:bg-accent-500/10"
+            className="whitespace-nowrap rounded-lg border border-accent-500/40 px-4 py-1.5 text-sm text-accent-300 transition-colors hover:bg-accent-500/10"
           >
             Hablemos
           </a>
@@ -65,14 +67,14 @@ export default function Navbar() {
         <button
           type="button"
           onClick={() => setOpen((o) => !o)}
-          className="text-slate-300 transition-colors hover:text-accent-400 md:hidden"
+          className="text-slate-300 transition-colors hover:text-accent-400 lg:hidden"
           aria-label={open ? "Cerrar menú" : "Abrir menú"}
         >
           {open ? <XIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
         </button>
       </nav>
       {open && (
-        <div className="border-t border-midnight-600/50 bg-midnight-950/95 backdrop-blur-md md:hidden">
+        <div className="border-t border-midnight-600/50 bg-midnight-950/95 backdrop-blur-md lg:hidden">
           <div className="flex flex-col gap-1 px-6 py-4">
             {links.map((link) => (
               <a
