@@ -4,7 +4,7 @@ import CountUp from "@/components/CountUp";
 import HeroTerminal from "@/components/HeroTerminal";
 import Magnetic from "@/components/Magnetic";
 import NeuralField from "@/components/NeuralField";
-import Scramble from "@/components/Scramble";
+import DiffusionName from "@/components/DiffusionName";
 import TypedRoles from "@/components/TypedRoles";
 import { DownloadIcon, GitHubIcon, LinkedInIcon, MailIcon } from "@/components/icons";
 
@@ -13,6 +13,11 @@ const FADE = "animate-[fade-up_0.9s_cubic-bezier(0.22,1,0.36,1)_both]";
 const delay = (step: number): CSSProperties => ({
   animationDelay: `calc(var(--intro-delay, 1900ms) + ${300 + step * 110}ms)`,
 });
+
+const NAME_LINES = [
+  { text: "Hugo" },
+  { text: "García", className: "gradient-letter drop-shadow-[0_0_40px_rgba(56,189,248,0.35)]" },
+];
 
 const marqueeItems = skills.categories.flatMap((category) => category.items);
 
@@ -58,17 +63,10 @@ export default function Hero() {
           <p style={delay(1)} className={`${FADE} mt-8 font-mono text-sm text-accent-400`}>
             {"// hola, soy"}
           </p>
-          <h1 className="font-display mt-3 text-[3.6rem] font-bold leading-[0.92] tracking-tighter text-slate-100 sm:text-7xl md:text-8xl lg:text-[7.2rem]">
-            <Scramble text="Hugo" afterIntro delay={100} duration={700} className="block" />
-            <Scramble
-              text="García"
-              afterIntro
-              delay={350}
-              duration={900}
-              className="block drop-shadow-[0_0_40px_rgba(56,189,248,0.35)]"
-              charClassName="gradient-letter"
-            />
-          </h1>
+          <DiffusionName
+            lines={NAME_LINES}
+            className="font-display mt-3 text-[3.6rem] font-bold leading-[0.92] tracking-tighter text-slate-100 sm:text-7xl md:text-8xl lg:text-[7.2rem]"
+          />
 
           <p
             style={delay(3)}
